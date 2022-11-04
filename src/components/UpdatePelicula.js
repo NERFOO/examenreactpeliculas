@@ -17,6 +17,7 @@ export default class UpdatePelicula extends Component {
         genero : {}
     }
 
+    //CARGA TODOS LOS GENEROS EN EL SELECT
     cargarGeneros = () => {
         var request = "/api/Generos/";
         var url = Global.url + request;
@@ -28,6 +29,7 @@ export default class UpdatePelicula extends Component {
             })
         })
     }
+    //CARGA TODAS PELICULAS EN EL SELECT
     cargarPeliculas = () => {
         var request = "/api/Peliculas/";
         var url = Global.url + request;
@@ -40,6 +42,7 @@ export default class UpdatePelicula extends Component {
         })
     }
 
+    //CARGA UNA PELICULA
     cargarPelicula = () => {
         var request = "/api/Peliculas/" + this.props.idPeli;
         var url = Global.url + request;
@@ -51,6 +54,7 @@ export default class UpdatePelicula extends Component {
             })
         })
     }
+    //CARGA UN GENERO
     cargarGenero = () => {
         var request = "/api/Generos/" + this.props.idGen;
         var url = Global.url + request;
@@ -62,6 +66,7 @@ export default class UpdatePelicula extends Component {
             })
         })
     }
+    //CARGA LOS COMPONENTES AL CARGAR LA PAGINA
     componentDidMount = () => {
         this.cargarGeneros();
         this.cargarPeliculas();
@@ -69,6 +74,7 @@ export default class UpdatePelicula extends Component {
         this.cargarGenero();
     }
 
+    //DECLARACION DE REFERENCIAS PARA LOS SELECT
     genero =  React.createRef();
     pelicula =  React.createRef();
 
@@ -76,6 +82,8 @@ export default class UpdatePelicula extends Component {
         e.preventDefault();
 
         var peticion = "";
+        //CONDICION DOND COMPRUEBA SI VIENE DE GENERO O NACIONALIDAD
+        //NO FUNCIONA POR QUE ES PELICULA Y NO PELICULAS
         if(this.props.nom == "PeliculasGenero") {
             peticion = this.props.idGen;
 
@@ -83,6 +91,7 @@ export default class UpdatePelicula extends Component {
             peticion = this.props.idNac;
         }
 
+        //DEVUELVO LOS CAMBIOS PARA ACTUALIZAR LA PELICULA
         var cambio = {
             idPelicula : this.props.idPeli ,
             idGenero: peticion

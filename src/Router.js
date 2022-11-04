@@ -10,6 +10,7 @@ import UpdatePelicula from './components/UpdatePelicula';
 export default class Router extends Component {
     render() {
 
+        //FUNCIONES DONDE RECOGEMOS LOS VALORES EN LA URL Y LOS DEVOLVEMOS COMO PROPS
         function CargarComponente() {
             var { id, nom, valor } = useParams();
             return(<Peliculas id={id} nom={nom} valor={valor}/>)
@@ -30,11 +31,11 @@ export default class Router extends Component {
             return(<UpdatePelicula idPeli={idPeli} idGen={idGen} idNac={idNac} nom={nom}/>)
         }
 
-
         return (<div>
             <BrowserRouter>
             <Menu />
                 <Routes>
+                    {/*CREACION DE LAS RUTAS*/}
                     <Route path="/" element={<Home />}/>
                     <Route path="/genero/:id/:nom/:valor" element={<CargarComponente />}/>
                     <Route path="/nacionalidad/:id/:nom/:valor" element={<CargarComponente />}/>

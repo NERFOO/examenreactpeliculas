@@ -10,6 +10,7 @@ export default class Pelicula extends Component {
         pelicula : {}
     }
 
+    //CARGA LA PELICULA Y BUSCA POR EL ID QUE VIENE POR PROPS
     cargarPelicula = () => {
         var request = "/api/Peliculas/" + this.props.id;
         var url = Global.url + request;
@@ -21,6 +22,7 @@ export default class Pelicula extends Component {
             })
         })
     }
+    //CARGA LA PELICULA AL INICIAR LA PAGINA
     componentDidMount = () => {
         this.cargarPelicula();
     }

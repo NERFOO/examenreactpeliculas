@@ -9,12 +9,14 @@ export default class DeletePelicula extends Component {
         status : false
     }
 
+    //FUNCION DELETE DENTRO DE UN FORM POR ELLO LA VARIABE e Y LA LINEA 14
     eliminar = (e) => {
         e.preventDefault();
 
         var request = "/api/Peliculas/" + this.props.idPeli;
         var url = Global.url + request;
 
+        //ELIMINACION DE LA PELICULA
         axios.delete(url).then( res => {
             this.setState({
                 status : true

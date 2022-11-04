@@ -11,7 +11,9 @@ export default class Peliculas extends Component {
         datos : []
     }
 
+    //FUNCION PARA CARGAR TODAS LAS PELICULAS DEPENDIENDO EL FILTRO SIGUIENTE
     cargarComponente = () => {
+        //CONDICIONAL DE LA VARIABLE QUE RECIBE AL CLICKEAR SI GENERO O NACIONALIDAD
         var peticion = "";
         if(this.props.nom == "PeliculasGenero") {
             peticion = this.props.nom;
@@ -28,9 +30,11 @@ export default class Peliculas extends Component {
             })
         })
     }
+    //COMPONENTE QUE CARGA LA FUNCION AL INICIAR LA PAGINA
     componentDidMount = () => {
         this.cargarComponente();
     }
+    //COMPONENTE QUE CARGA LA FUNCION AL ACTUALIZAR LA PAGINA EN CASO DE QUE EL ID SEA DISTINTO
     componentDidUpdate = (oldProps) => {
         if(this.props.id != oldProps.id) {
             this.cargarComponente();
@@ -38,6 +42,7 @@ export default class Peliculas extends Component {
     }
 
     render() {
+        //CONDICIONAL PARA PONER UN GIFT DE CARGA CUANDO NO HAYA DEVUELTO DATOS LA API
         if(this.state.status == false) {
             return(<img src={loading} alt="cargando" style={{width:"100%"}}/>)
         } else {
